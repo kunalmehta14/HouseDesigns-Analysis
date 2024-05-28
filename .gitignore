@@ -1,0 +1,21 @@
+# Python venv folders
+Lib
+Scripts
+__pycache__/
+pyvenv.cfg
+# env files
+.env
+environment.env
+# Ignore Drawio Files
+*.drawio
+*.bkp
+*.dtmp
+# Model Files
+*.keras
+# Log Files
+logs
+# Jupyter Notebooks Cache
+.ipynb_checkpoints
+.Trash-0
+# Archives
+archive

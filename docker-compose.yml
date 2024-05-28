@@ -1,0 +1,32 @@
+networks:
+  containerNetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.50.190.0/29
+
+services:
+  tensorflow-container:
+    restart: always
+    container_name: tensorflow-container
+    build:
+      context: ./JupyterNotebooks
+      dockerfile: Dockerfile
+    ports:
+      - "9095:8888"
+    env_file:
+      - environment.env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - count: all
+              capabilities: [gpu]
+    volumes:
+      - ./JupyterNotebooks:/opt/JupyterNotebooks
+      - E:\home-styles:/opt/JupyterNotebooks/home-styles
+    networks:
+      containerNetwork:
+        ipv4_address: 10.50.190.3
+    privileged: true
